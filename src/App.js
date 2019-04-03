@@ -33,11 +33,9 @@ render(){
     <Header cart = {this.state.counter} />
     <div className="container-fluid">
     <div className="row">
-    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
     <Search search={this.handleClick}
     searchText = {this.handleChange} />
     <DataList search = {this.state.searchQuery}/>
-    </div>
     </div>
     </div>
     </div>
