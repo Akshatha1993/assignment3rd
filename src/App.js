@@ -1,28 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import DataList from './Component/assignment/dataList';
+import Search from './Search';
+import Header from './Header';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+constructor(props){
+  super();
+  this.state={
+    counter:0,
+    searchQuery:'',
+  };
+  this.handleClick = this.handleClick.bind(this);
+  this.handleChange = this.handleChange.bind(this);
+}
+handleClick(data){
+  console.log(data);
+  let currentCounter = this.state;
+  currentCounter.counter++;
+  this.setState(currentCounter);
 }
 
+handleChange(data){
+  console.log(data);
+  let currentCounter = this.state;
+  currentCounter.searchQuery = data;
+  this.setState(currentCounter);
+}
+
+render(){ 
+  return(
+    <div>
+    <Header cart = {this.state.counter} />
+    <div className="container-fluid">
+    <div className="row">
+    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <Search search={this.handleClick}
+    searchText = {this.handleChange} />
+    <DataList search = {this.state.searchQuery}/>
+    </div>
+    </div>
+    </div>
+    </div>
+  )   
+
+}
+}
 export default App;
